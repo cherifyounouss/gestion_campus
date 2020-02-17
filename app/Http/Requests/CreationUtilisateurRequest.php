@@ -28,7 +28,9 @@ class CreationUtilisateurRequest extends FormRequest
             'nom' => 'required|alpha',
             'date_naissance' => 'date',
             'numero_telephone' => 'numeric',
-            'profil' => 'in:Caissier,Responsable buanderie, Responsable pavillon'
+            'profil' => 'in:Caissier,Responsable buanderie, Responsable pavillon',
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:4', 'confirmed'],
         ];
     }
 }
