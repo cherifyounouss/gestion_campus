@@ -6,8 +6,15 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Cr&eacute;ation pavillon</div>
-
                 <div class="card-body">
+                    @if (session('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ session('success') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
                     <form method="POST" action="{{route('pavillon.sauver')}}" id="enregistrer_form" action="{{ route('profil_utilisateur.enregistrer') }}">
                         @csrf
 
