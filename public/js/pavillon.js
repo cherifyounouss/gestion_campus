@@ -16,6 +16,11 @@ document.addEventListener("DOMContentLoaded", function() {
             libelle_etage : document.getElementById('libelle_etage').value,
             nombre_chambre : document.getElementById('nombre_chambre').value
         };
+        var button = document.createElement('button');
+
+        button.setAttribute('type', 'button');
+        button.className += 'btn btn-sm btn-danger float-right';
+        button.innerHTML = 'Supprimer';
 
         // Insertion des champs pour informations
         var cardNode = document.createElement("div");
@@ -23,11 +28,16 @@ document.addEventListener("DOMContentLoaded", function() {
         var cardBody = document.createElement("div");
         cardBody.classList.add('card-body');
         cardNode.appendChild(cardBody);
-        cardBody.innerHTML = `<p><strong>Nom:</strong> ${etage.libelle_etage} | <strong>Nombre chambre:</strong> ${etage.nombre_chambre}</p>`
+        cardBody.innerHTML = `<strong>Nom:</strong> ${etage.libelle_etage} | <strong>Nombre chambre:</strong> ${etage.nombre_chambre}`
+        cardBody.appendChild(button);
         etages.push(etage);
         form.insertBefore(cardNode, document.getElementById('boutons'));
 
-
+        button.addEventListener('click', function () {
+            etages = etages.filter(e => e.libelle_etage !== etage.libelle_etage);
+            form.removeChild(cardNode);
+            console.log(etages);
+        }, false)
         // Insertion des champs masqués pour pouvoir transmettre les informations au niveau de la requête
         var etageInput = document.createElement('input');
         etageInput.setAttribute('type', 'hidden');
@@ -43,31 +53,7 @@ document.addEventListener("DOMContentLoaded", function() {
         //modal.classList.remove('show');
     }, false);
 
-    // boutonCreer.addEventListener('click', function () {
-    //     var reg = /^[a-z0-9]+$/i;
-    //     var libelle = document.getElementById('libelle');
-    //     if (libelle.value.length <= 0 || !reg.test(libelle.value))
-    //         alert('remplir libelle');
-    //     else {
-    //         data = {
-    //             'libelle': libelle.value,
-    //             'etages': etages
-    //         };
-    //         console.log(data);
-    //         var token = document.getElementById('csrf_token');
-    //         var params = typeof data == 'string' ? data : Object.keys(data).map(
-    //             function(k){ return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) }
-    //         ).join('&');
-    //         var xhr = new XMLHttpRequest();
-    //         xhr.open('POST', APP_URL + '/pavillon/sauver');
-    //         xhr.onreadystatechange = function() {
-    //             if (xhr.readyState>3 && xhr.status==200) { console.log(xhr.responseText); }
-    //         };
-    //         xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-    //         xhr.setRequestHeader('X-CSRF-TOKEN', token.getAttribute('content'));
-    //         xhr.send(params);
-    //     }
-    // }, false);
+    
 });
 
 
