@@ -23,3 +23,5 @@ Route::get('/etudiant/upload', 'EtudiantController@index');
 Route::post('/etudiant/import', 'EtudiantController@import');
 Route::get('/creer_utilisateur', 'CreationUtilisateurController@creer_utilisateur')->name('profil_utilisateur.creer');
 Route::post('/enregistrer_utilisateur', 'CreationUtilisateurController@enregistrer_utilisateur')->name('profil_utilisateur.enregistrer');
+Route::get('/pavillon/enregistrer', 'PavillonController@create')->name('pavillon.enregistrer');
+Route::post('/pavillon/sauver', 'PavillonController@store')->name('pavillon.sauver');
