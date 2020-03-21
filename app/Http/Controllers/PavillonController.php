@@ -42,7 +42,7 @@ class PavillonController extends Controller
 
         $pavillon = new Pavillon(['libelle' => $libellePavillon]);
         $pavillon->save();
-        echo($nombreEtage);
+        //echo($nombreEtage);
         if ($nombreEtage > 0) {
             for ($i=0; $i < $nombreEtage; $i++) {
                 $etage = explode('|', $data['etage'.$i]);
@@ -63,8 +63,7 @@ class PavillonController extends Controller
             }
         }
 
-        echo("success");
-        die;
+        return redirect()->back()->with('success', 'Le pavillon a été enregistré avec succès');
     }
 
     /**
