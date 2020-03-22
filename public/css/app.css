@@ -10884,3 +10884,8 @@ a.text-dark:focus {
   }
 }
 
+.bouton_lien {
+    border:none;
+    background:transparent;
+    text-decoration:underline;
+}
