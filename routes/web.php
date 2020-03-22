@@ -20,6 +20,19 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/etudiant/upload', 'EtudiantController@index');
+
 Route::post('/etudiant/import', 'EtudiantController@import');
+
 Route::get('/creer_utilisateur', 'CreationUtilisateurController@creer_utilisateur')->name('profil_utilisateur.creer');
+
 Route::post('/enregistrer_utilisateur', 'CreationUtilisateurController@enregistrer_utilisateur')->name('profil_utilisateur.enregistrer');
+
+// dean's routes
+
+Route::get('/constraint/form', 'ConstraintsController@index');
+
+Route::post('/constraint/add', 'ConstraintsController@add_constraint');
+
+Route::post('/constraint/add_constraint_on_room', 'ConstraintsController@add_constraint_on_room');
+
+Route::post('/constraint/fetch', 'ConstraintsController@fetch')->name('constraints_controller.fetch');
