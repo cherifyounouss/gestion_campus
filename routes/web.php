@@ -36,3 +36,7 @@ Route::post('/constraint/add', 'ConstraintsController@add_constraint');
 Route::post('/constraint/add_constraint_on_room', 'ConstraintsController@add_constraint_on_room');
 
 Route::post('/constraint/fetch', 'ConstraintsController@fetch')->name('constraints_controller.fetch');
+Route::post('/enregistrer_utilisateur', 'CreationUtilisateurController@enregistrer_utilisateur')->name('profil_utilisateur.enregistrer');
+Route::get('/pavillon/enregistrer', 'PavillonController@create')->name('pavillon.enregistrer');
+Route::post('/pavillon/sauver', 'PavillonController@store')->name('pavillon.sauver');
+Route::get('/pavillon/liste', 'PavillonController@index')->name('pavillon.liste');
