@@ -25,3 +25,4 @@ Route::get('/creer_utilisateur', 'CreationUtilisateurController@creer_utilisateu
 Route::post('/enregistrer_utilisateur', 'CreationUtilisateurController@enregistrer_utilisateur')->name('profil_utilisateur.enregistrer');
 Route::get('/pavillon/enregistrer', 'PavillonController@create')->name('pavillon.enregistrer');
 Route::post('/pavillon/sauver', 'PavillonController@store')->name('pavillon.sauver');
+Route::get('/pavillon/liste', 'PavillonController@index')->name('pavillon.liste');
