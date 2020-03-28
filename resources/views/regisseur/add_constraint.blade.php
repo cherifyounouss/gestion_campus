@@ -12,7 +12,7 @@
 
                 <div class="card-body">
                     
-                    <form action="/constraint/add" method="post">
+                <form action="{{url("/constraint/add")}}" method="post">
 
                         <div class="form-group">
 
@@ -114,71 +114,73 @@
         </div>
 
     </div>
-    
-    <script>
-        $(document).ready(function(){
 
-            $('#pavillon').change(function(){
+@endsection
 
-                var pavillon_id = $(this).children("option:selected").val();
+@section('scripts')
+<script>
+    $(document).ready(function(){
 
-                var _token =  $('input[name="_token"]').val();
+        $('#pavillon').change(function(){
 
-                if(pavillon_id !=''){
-
-                    $.ajax({
-    
-                        url:"{{ route('constraints_controller.fetch') }}",
-    
-                        method:"POST",
-    
-                        data:{element_id:pavillon_id, type:"pavillon", _token:_token},
-    
-                        success:function(result){
-    
-                            $('#etage option').remove();
-
-                            $('#etage').append(result);
-                            
-                        }
-
-                 });
-                 
-                }
-
-            });
-
-            $('#etage').change(function(){
-
-            var etage_id = $(this).children("option:selected").val();
+            var pavillon_id = $(this).children("option:selected").val();
 
             var _token =  $('input[name="_token"]').val();
 
-            if(etage_id !=''){
+            if(pavillon_id !=''){
 
-            $.ajax({
+                $.ajax({
 
-            url:"{{ route('constraints_controller.fetch') }}",
+                    url:"{{ route('constraints_controller.fetch') }}",
 
-            method:"POST",
+                    method:"POST",
 
-            data:{element_id:etage_id, type:"etage", _token:_token},
+                    data:{element_id:pavillon_id, type:"pavillon", _token:_token},
 
-            success:function(result){
+                    success:function(result){
 
-                $('#chambre option').remove();
+                        $('#etage option').remove();
 
-                $('#chambre').append(result);
-            
+                        $('#etage').append(result);
+                        
+                    }
+
+             });
+             
             }
 
-         });
- 
+        });
+
+        $('#etage').change(function(){
+
+        var etage_id = $(this).children("option:selected").val();
+
+        var _token =  $('input[name="_token"]').val();
+
+        if(etage_id !=''){
+
+        $.ajax({
+
+        url:"{{ route('constraints_controller.fetch') }}",
+
+        method:"POST",
+
+        data:{element_id:etage_id, type:"etage", _token:_token},
+
+        success:function(result){
+
+            $('#chambre option').remove();
+
+            $('#chambre').append(result);
+        
+        }
+
+     });
+
 }
 
 });
 
-        });
-    </script>
-
+    });
+</script>
 @endsection

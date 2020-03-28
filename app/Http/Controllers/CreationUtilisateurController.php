@@ -11,6 +11,17 @@ use App\Utilisateur;
 
 class CreationUtilisateurController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     //
     public function creer_utilisateur()
     {
