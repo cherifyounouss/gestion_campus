@@ -15,7 +15,20 @@ class PavillonController extends Controller
      */
     public function index()
     {
-        //
+        $pavillonsFromDB = Pavillon::all();
+        $pavillons = array();
+        foreach ($pavillonsFromDB as $pav) {
+            $pavillons[$pav->libelle] = array();
+            // recuperation des etages du pavillon
+            $etages = Etage::where('idPavillon', $pav->id)->get();
+            foreach ($etages as $etage) {
+                //$pavillons[$pav->libelle][$etage->libelle] = array();
+                $nombreChambre = Chambre::where('idEtage', $etage->id)->count();
+                $pavillons[$pav->libelle][$etage->libelle] = $nombreChambre;
+            }
+        }
+        //echo($pavillons->count().'\n');
+        return view('regisseur.liste_pavillon')->with('pavillons', $pavillons);
     }
 
     /**
