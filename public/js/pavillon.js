@@ -33,11 +33,6 @@ document.addEventListener("DOMContentLoaded", function() {
         etages.push(etage);
         form.insertBefore(cardNode, document.getElementById('boutons'));
 
-        button.addEventListener('click', function () {
-            etages = etages.filter(e => e.libelle_etage !== etage.libelle_etage);
-            form.removeChild(cardNode);
-            console.log(etages);
-        }, false)
         // Insertion des champs masqués pour pouvoir transmettre les informations au niveau de la requête
         var etageInput = document.createElement('input');
         etageInput.setAttribute('type', 'hidden');
@@ -47,13 +42,20 @@ document.addEventListener("DOMContentLoaded", function() {
 
         nombreEtageInput.setAttribute('value', (parseInt(nombreEtageInput.value) + 1) + '');
 
+        button.addEventListener('click', function () {
+            etages = etages.filter(e => e.libelle_etage !== etage.libelle_etage);
+            form.removeChild(cardNode);
+            form.removeChild(etageInput);
+            console.log(etages);
+        }, false);
+
         console.log(nombreEtageInput.value);
         console.log(etages);
         closeOneModal("exampleModal");
         //modal.classList.remove('show');
     }, false);
 
-    
+
 });
 
 
