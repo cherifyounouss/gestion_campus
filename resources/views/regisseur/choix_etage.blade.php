@@ -1,5 +1,5 @@
 
-@extends('layouts.app')
+@extends('layouts.editPav')
 
 @section('content')
 <div class="container">

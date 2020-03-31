@@ -1,12 +1,12 @@
 
-@extends('layouts.app')
+@extends('layouts.editPav')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                
 
                 <div class="card-body">
                   <?php for ($i=1; $i <count($pavillons)+1; $i++) { 
@@ -40,7 +40,7 @@
                             </td>
                             <td>
                               <input type="hidden" name="id" value="<?php echo($id); ?>">
-                              <input type="submit" name="valider" value="modifier" class="bouton_lien">
+                              <input type="submit" name="valider" value="select" class="bouton_lien">
                               @csrf
                             </td>
                           </tr>
